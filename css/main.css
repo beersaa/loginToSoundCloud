@@ -9,7 +9,7 @@ body{
     background-image: url("../slike/background.jpg");
     flex: 1;
     position:absolute;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .top{
     width: 100%;
@@ -40,15 +40,20 @@ body{
     margin-top: 5%;
 }
 .field-login{
-    text-align: center;
     margin-top: 7%;
-    
 }
 .field-login-user{
     margin-bottom: 5%;
+    padding-left: 30%;
+
 }
 .field-login-pass{
+    margin-bottom: 5%;    
+    padding-left: 30%;
+}
+.field-login-submit{
     margin-bottom: 5%;
+    text-align: center;
 }
 .foot{
     width: 100%;
@@ -56,6 +61,7 @@ body{
     background-color: black;
 }
 input[type=text]{
+    
     width: 60%;
     height: 10%;
     border-radius: 18px;
