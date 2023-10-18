@@ -2,10 +2,6 @@ body{
     margin: 0%;
     padding: 0%;
 }
-a{
-    color: #ffffff;
-    text-decoration: none;
-}
 .glavni{
     width: 100%;
     height: 100%;
@@ -26,37 +22,34 @@ a{
     height: 80%;
 }
 .top-picture{
-    padding-top: 9px;
+    padding-top: 0.5%;
     padding-left: 1%;
 }
 
 .top-donate{
-    padding-top: 11px;
-    border-style: solid;
-    border-top: none;
-    border-bottom: none;
+    padding-top: 0.6%;
     border-width: 1px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    color: #ffffff;
+    text-decoration: none;
 }
-
 .top-donate:hover{
-    background-color: #696969;
+    background-color: #ff7700;
     cursor:pointer;
 }
 .top-artist{
-    padding-top: 11px;
-    border-style: solid;
-    border-top: none;
-    border-bottom: none;
-    border-left: none;
-    border-width: 1px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 0.6%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
 }
 .top-artist:hover{
-    background-color: #696969;
+    background-color: #ff7700;
     cursor:pointer;
+}
+.top-link{
+    color: #ffffff;
+    text-decoration: none;
 }
 .middle{
     width: 100%;
