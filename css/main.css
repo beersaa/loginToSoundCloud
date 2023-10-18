@@ -2,6 +2,10 @@ body{
     margin: 0%;
     padding: 0%;
 }
+a{
+    color: #ffffff;
+    text-decoration: none;
+}
 .glavni{
     width: 100%;
     height: 100%;
@@ -25,6 +29,7 @@ body{
     padding-top: 9px;
     padding-left: 1%;
 }
+
 .top-donate{
     padding-top: 11px;
     border-style: solid;
@@ -34,6 +39,7 @@ body{
     padding-left: 10px;
     padding-right: 10px;
 }
+
 .top-donate:hover{
     background-color: #696969;
     cursor:pointer;
