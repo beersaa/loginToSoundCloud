@@ -77,18 +77,53 @@ body{
 }
 .field-middle{
     padding-top: 5%;
-    text-align: center;
+    padding-left: 20%;
+    word-spacing: ;
 }
-.input-name{
+.field-middle-row1{
+    display: flex;
 }
-.input-lastname{
+.field-middle-row1-name{
+   
+}
+.field-middle-row1-lastname{
 
 }
-.input-username{
-
+.field-middle-row2{
+    display: flex;
 }
-.input-email{
+.field-middle-row2-username{
     
+}
+.field-middle-row2-email{
+
+}
+.field-middle-row3{
+    display: flex;
+}
+.field-middle-row3-number{
+
+}
+.field-middle-row3-address{
+
+}
+.field-middle-row4{
+    display: flex;
+}
+.field-middle-row4-password{
+
+}
+.field-middle-row4-passwordconf{
+
+}
+.field-middle-buttons{
+    display: flex;
+}
+.field-middle-buttons-return{
+
+}
+.field-middle-row1-register{
+
 }
 .foot{
     width: 100%;
