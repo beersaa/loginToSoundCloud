@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-	<script src="javascript/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <script src="javascript/iziToast.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="main">
@@ -30,47 +31,47 @@
                     <form>
                         <div class="field-middle-row1">
                             <div class="field-middle-row1-name">
-                                Name:<br>
-                                <input class="field-middle-row1-name-input" type="text">
+                                Name:<j>*</j><br>
+                                <input id="Input" class="field-middle-row1-name-input" type="text" required>
                             </div>
                             <div class="field-middle-row1-lastname">
-                                Lastname:<br>
-                                <input class="field-middle-row1-lastname-input" type="text">
+                                Lastname:<j>*</j><br>
+                                <input id="Input" class="field-middle-row1-lastname-input" type="text" required>
                             </div>
                         </div>
                         <div class="field-middle-row2">
                             <div class="field-middle-row2-username">
-                                Username:<br>
-                                <input class="field-middle-row2-username-input" type="text">
+                                Username:<j>*</j><br>
+                                <input id="Input" class="field-middle-row2-username-input" type="text" required>
                             </div>
                             <div class="field-middle-row2-email">
-                                Email:<br>
-                                <input class="field-middle-row2-email-input" type="text">
+                                Email:<j>*</j><br>
+                                <input id="Input" class="field-middle-row2-email-input" type="text" required>
                             </div>
                         </div>
                         <div class="field-middle-row3">
                             <div class="field-middle-row3-number">
-                                Number:<br>
-                                <input class="field-middle-row3-number-input" type="text" pattern="[0-9]{9}" required>
+                                Number:<j>*</j><br>
+                                <input id="Input" class="field-middle-row3-number-input" type="text" pattern="[0-9]{9}" required>
                             </div>
                             <div class="field-middle-row3-address">
-                                Address:<br>
-                                <input class="field-middle-row3-address-input" type="text">
+                                Address:<j>*</j><br>
+                                <input id="Input" class="field-middle-row3-address-input" type="text" required>
                             </div>
                         </div>
                         <div class="field-middle-row4">
                             <div class="field-middle-row4-password">
-                                Password:<br>
-                                <input class="field-middle-row4-password-input" type="password">
+                                Password:<j>*</j><br>
+                                <input id="Input" class="field-middle-row4-password-input" type="password" required>
                             </div>
                             <div class="field-middle-row4-passwordconf">
-                                Confirm password:<br>
-                                <input class="field-middle-row4-passwordconf-input" type="password">
+                                Confirm password:<j>*</j><br>
+                                <input id="Input" class="field-middle-row4-passwordconf-input" type="password" required>
                             </div>
                         </div>
                         <div class="field-middle-licence">
                             <label>
-                                <input type="checkbox" class="field-middle-licence-checkbox"> By checking this box, you are agreeing to our <a href="https://soundcloud.com/terms-of-use" class="field-middle-licence-link">terms of service</a>.
+                                <input id='check' type="checkbox" class="field-middle-licence-checkbox" required> By checking this box, you are agreeing to our <a href="https://soundcloud.com/terms-of-use" class="field-middle-licence-link">terms of service</a>.
                             </label>
                         </div>
                         <div class="field-middle-buttons">
@@ -92,18 +93,24 @@
         </div>
     </div>
 	<script>
-		document.getElementById('button-regi').addEventListener('click',function(){
-			Swal.fire({
-			position: 'bottom-right',
-			iconColor: '#ff7700',
-			width: '500px',
-			icon: 'success',
-			title: 'Registracija uspešna',
-			showConfirmButton: false,
-			timer: 1500
-			
-			})
-		})
+		document.getElementById('button-regi').addEventListener('click', function() {
+            var myInput = document.getElementById("Input");
+            var elm = document.getElementById('check');
+            if(!myInput.value.trim() || !elm.checked){
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please fill all the fields',
+                });
+            }else{
+                iziToast.success({
+                    title: 'OK',
+                    message: 'Successfully registered!',
+                    color: '#ff7700',
+                    titleColor: '#000000',
+                });
+                location.reload(true);
+            }
+        });
 	</script>
 </body>
 </html>
