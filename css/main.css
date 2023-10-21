@@ -129,7 +129,6 @@ body{
     border: none;
     background-color: #ff7700;
     color: #ffffff;
-    font-weight: bold;
 }
 .button-register{
     width: 80px;
@@ -147,6 +146,7 @@ body{
 }
 .button-login:hover{
     cursor:pointer;
+    background-color: #ff7700cb;
 }
 .button-register:hover{
     cursor:pointer;
