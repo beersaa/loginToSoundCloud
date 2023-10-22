@@ -23,10 +23,10 @@
             </div>
             <div class="top-right">
                 <div class="top-login">
-                    <button class="top-login-button">Login</button>
+                    <a class="top-link" href="index.html"><button class="top-login-button">Login</button></a>
                 </div>
                 <div class="top-signup">
-                    <button class="top-signup-button">Sign up</button>
+                    <a class="top-link" href="register.html"><button class="top-signup-button">Sign up</button></a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="field-middle-row2-email">
                                 Email:<j>*</j><br>
-                                <input id="Input" class="field-middle-row2-email-input" type="text" required>
+                                <input id="Input" class="field-middle-row2-email-input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                             </div>
                         </div>
                         <div class="field-middle-row3">
@@ -83,10 +83,8 @@
                             </label>
                         </div>
                         <div class="field-middle-buttons">
-                            <div class="field-middle-buttons-return">
-								<a href="index.html">
-									<button class="button-return" type="button" role="button" formnovalidate >RETURN</button>
-								</a>
+                            <div class="field-middle-buttons-return">							
+									<button class="button-return" type="button" role="button" formnovalidate ><a class="regi-link" href="index.html">RETURN</a></button>
                             </div>
                             <div class="field-middle-buttons-register">
                                 <button id="button-regi" class="button-regi">REGISTER</button>
@@ -104,19 +102,22 @@
 		document.getElementById('button-regi').addEventListener('click', function() {
             var myInput = document.getElementById("Input");
             var elm = document.getElementById('check');
+            const inputs = document.querySelectorAll('#Input');
             if(!myInput.value.trim() || !elm.checked){
                 iziToast.error({
                     title: 'Error',
                     message: 'Please fill all the fields',
                 });
             }else{
+                inputs.forEach(input => {
+                    input.value = '';
+            });
                 iziToast.success({
                     title: 'OK',
                     message: 'Successfully registered!',
                     color: '#ff7700',
                     titleColor: '#000000',
                 });
-                location.reload(true);
             }
         });
 	</script>

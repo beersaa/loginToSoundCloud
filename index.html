@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <script src="javascript/iziToast.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="main">
@@ -18,9 +20,6 @@
             <div class="top-donate">
                 <a class="top-link" href="donate.html">Donate</a>
             </div>
-            <div class="top-artist">
-                <a class="top-link" href="artist.html">Featured artist</a>
-            </div>
         </div>
         <div class="middle">
             <div class="field">
@@ -29,11 +28,11 @@
                     <div class="field-login-input">
                         <div class="field-login-input-user">
                             Username:<br>
-                            <input class="input-user" type="text" id="Username" required><br>
+                            <input id="Input" class="input-user" type="text" id="Username" required><br>
                         </div>
                         <div class="field-login-input-pass">
                             Password:<br>
-                            <input class="input-password" type="password" id="Pass" required><br>
+                            <input id="Input2" class="input-password" type="password" id="Pass" required><br>
                         </div>
                     </div>
                     <div class="field-login-down">
@@ -43,7 +42,7 @@
                             </a>
                         </div>
                         <div class="field-login-down-submit">
-                            <input class="button-login" type="submit" value="Login">
+                            <input id="button-login" class="button-login" type="submit" value="Login">
                         </div>
                     </div>
                 </form>
@@ -53,5 +52,29 @@
             <!-- Footer content goes here -->
         </div>
     </div>
+    <script>
+        document.getElementById('button-login').addEventListener('click', function() {
+            var myInput = document.getElementById("Input");
+            var myInput2 = document.getElementById("Input2");
+            const inputs = document.querySelectorAll('#Input ,#Input2');
+
+            if(!myInput.value.trim() || !myInput2.value.trim()){
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please type in your username and password',
+                });
+            }else{
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                iziToast.success({
+                    title: 'OK',
+                    message: 'Successfully logged in!',
+                    color: '#ff7700',
+                    titleColor: '#000000',
+                });
+            }
+        });
+    </script>
 </body>
 </html>
