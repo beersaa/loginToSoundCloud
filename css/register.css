@@ -48,6 +48,46 @@ body{
     color: #ffffff;
     text-decoration: none;
 }
+.top-right{
+    display: flex;
+    position: absolute;
+    right: 0px;
+    margin-right: 2%;
+    margin-top: 8px;  
+}
+.top-login{
+    padding-right: 20%;
+}
+.top-login-button{
+    border-radius: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    outline: 0px;
+    border: none;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.top-login-button:hover{
+    background-color: #bdbdbd;
+    color: #000000;
+}
+.top-signup{
+    padding-right: 10%;
+    width: 100px;
+}
+.top-signup-button{
+    background-color: #ff7700;
+    color: #000000;
+    border-radius: 10px;
+    border: none;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.top-signup-button:hover{
+    background-color: #ff7700cb;
+}
 .middle{
     width: 100%;
     height: 85%;
