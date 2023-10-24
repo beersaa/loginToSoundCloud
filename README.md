@@ -1,1 +1,1 @@
-Preprosta obrazec za prijavo 
+gasi
