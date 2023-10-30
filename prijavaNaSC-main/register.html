@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SoundCloud</title>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="slike/logo.svg" />
+    <link rel="stylesheet" href="css/register.css" type="text/css" media="all" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <script src="javascript/iziToast.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <div class="top-picture">
+                <img class="top-picture-image" src="slike/headlogo.jpg" alt="SoundCloud">
+            </div>
+            <div class="top-donate">
+                <a class="top-link" href="donate.html">Donate</a>
+            </div>
+            <div class="top-right">
+                <div class="top-login">
+                    <a class="top-link" href="index.html">
+                        <button class="top-login-button">Login</button>
+                    </a>
+                </div>
+                <div class="top-signup">
+                    <a class="top-link" href="register.html">
+                        <button class="top-signup-button">Sign up</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="field">
+                <div class="field-top">
+                    Register
+                </div>
+                <div class="field-middle">
+                    <form>
+                        <div class="field-middle-row1">
+                            <div class="field-middle-row1-name">
+                                Name:<j>*</j><br>
+                                <input id="Input" class="field-middle-row1-name-input" type="text" required>
+                            </div>
+                            <div class="field-middle-row1-lastname">
+                                Lastname:<j>*</j><br>
+                                <input id="Input" class="field-middle-row1-lastname-input" type="text" required>
+                            </div>
+                        </div>
+                        <div class="field-middle-row2">
+                            <div class="field-middle-row2-username">
+                                Username:<j>*</j><br>
+                                <input id="Input" class="field-middle-row2-username-input" type="text" required>
+                            </div>
+                            <div class="field-middle-row2-email">
+                                Email:<j>*</j><br>
+                                <input id="Input" class="field-middle-row2-email-input" type="text" required>
+                            </div>
+                        </div>
+                        <div class="field-middle-row3">
+                            <div class="field-middle-row3-number">
+                                Number:<j>*</j><br>
+                                <input id="Input" class="field-middle-row3-number-input" type="text" pattern="[0-9]{9}" required>
+                            </div>
+                            <div class="field-middle-row3-address">
+                                Address:<j>*</j><br>
+                                <input id="Input" class="field-middle-row3-address-input" type="text" required>
+                            </div>
+                        </div>
+                        <div class="field-middle-row4">
+                            <div class="field-middle-row4-password">
+                                Password:<j>*</j><br>
+                                <input id="Input" class="field-middle-row4-password-input" type="password" required>
+                            </div>
+                            <div class="field-middle-row4-passwordconf">
+                                Confirm password:<j>*</j><br>
+                                <input id="Input" class="field-middle-row4-passwordconf-input" type="password" required>
+                            </div>
+                        </div>
+                        <div class="field-middle-licence">
+                            <label>
+                                <input id='check' type="checkbox" class="field-middle-licence-checkbox" required> By checking this box, you are agreeing to our <a href="https://soundcloud.com/terms-of-use" class="field-middle-licence-link">terms of service</a>.
+                            </label>
+                        </div>
+                        <div class="field-middle-buttons">
+                            <div class="field-middle-buttons-return">
+								<a href="index.html">
+									<button class="button-return" type="button" role="button" formnovalidate >RETURN</button>
+								</a>
+                            </div>
+                            <div class="field-middle-buttons-register">
+                                <button id="button-regi" class="button-regi">REGISTER</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <!-- Footer content goes here -->
+        </div>
+    </div>
+	<script>
+		document.getElementById('button-regi').addEventListener('click', function() {
+            var myInput = document.getElementById("Input");
+            var elm = document.getElementById('check');
+            if(!myInput.value.trim() || !elm.checked){
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please fill all the fields',
+                });
+            }else{
+                iziToast.success({
+                    title: 'OK',
+                    message: 'Successfully registered!',
+                    color: '#ff7700',
+                    titleColor: '#000000',
+                });
+                location.reload(true);
+            }
+        });
+	</script>
+</body>
+</html>
