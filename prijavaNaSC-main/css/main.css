@@ -123,7 +123,9 @@ body {
     opacity: 1;
     transition: opacity 0.5s;
 }
-
+.smooth-fade {
+    transition: opacity 2s;
+}
 .field-login-input {
     margin-top: 7%;
     padding-left: 25%;

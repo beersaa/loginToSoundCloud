@@ -1,6 +1,6 @@
 <html>
 <head>		
-	<title>Donate :)</title>
+	<title>Thank you for donating!</title>
 	<meta charset="UTF-8" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="slike/logo.svg" />
@@ -32,10 +32,16 @@
             </div>
 		</div>
 		<div class="middle">
-			<div class="field">
+			<div class="field" onmouseover="changeText(this)" onmouseout="restoreText(this)">
 				<form>
-					<div class="field-top">
-						THANK YOU FOR DONATING!
+					<div class="field-top" style="display: flex; align-items: center;">
+						<div id="thank-you-text">THANK YOU FOR DONATING TO</div>
+						<div id="image-container" style="display: none; margin-left: 20px;">
+							<img id="logo-image" src="slike/headlogo.svg" alt="SoundCloud Logo" style="height: 1em;">
+						</div>
+						<div id="soundcloud-text-container" class="smooth-fade">
+							<span id="soundcloud-text" style="margin-left: 5%;">SoundCloud!</span>
+						</div>
 					</div>
 					<div class="field-middle">
 						<div class="field-middle-name">
@@ -56,14 +62,20 @@
 							<label>Select donation amount:</label><br>
 						</div>
 						<div class="donation-options">
-							<span id="radio1"><input type="radio" value="1">1$</span>
-							<span id="radio2"><input type="radio" value="1">5$</span>
-							<span id="radio3"><input type="radio" value="1">10$</span>
-							<span id="radio4"><input type="radio" value="1">25$</span>
-							<span id="radio5"><input type="radio" value="1">50$</span>
-							<span id="radio6"><input type="radio" value="1">Costume amount</span>
-							
+							<span id="radio1"><input id="radio1b" type="radio" value="1" name="amount" onchange="toggleCustomAmount(this)">1$</span>
+                			<span id="radio2"><input id="radio2b" type="radio" value="5" name="amount" onchange="toggleCustomAmount(this)">5$</span>
+                			<span id="radio3"><input id="radio3b" type="radio" value="10" name="amount" onchange="toggleCustomAmount(this)">10$</span>
+                			<span id="radio4"><input id="radio4b" type="radio" value="25" name="amount" onchange="toggleCustomAmount(this)">25$</span>
+                			<span id="radio5"><input id="radio5b" type="radio" value="50" name="amount" onchange="toggleCustomAmount(this)">50$</span>
+                			<span id="radio6"><input id="radio6b" type="radio" value="0" name="amount" onchange="toggleCustomAmount(this)">Custom amount</span>
 						</div>
+						<div class="costum-donation">
+							<input id="amount" type="text" placeholder="100$" maxlength="6" disabled>
+						</div>
+					</div>
+					<div class="field-middle-bottom">
+						<button class="button-paypal"><img class="img-paypal" src="slike/paypal.svg"> </button>
+						<button class="button-creditcard"> Pay with credit card</button>
 					</div>
 				</form>	
 			</div>
@@ -75,4 +87,29 @@
 		</div>
 	</div>
 </body>
+<script>
+    function toggleCustomAmount(radio) {
+        var customAmountInput = document.getElementById("amount");
+
+        if (radio.id === "radio6b") {
+            customAmountInput.disabled = false;
+        } else {
+            customAmountInput.disabled = true;
+            customAmountInput.value = "";
+        }
+    }
+	function changeText(element) {
+        var imageContainer = element.querySelector('#image-container');
+        var soundcloudTextContainer = element.querySelector('#soundcloud-text-container');
+        imageContainer.style.display = 'inline';
+        soundcloudTextContainer.style.display = 'none';
+    }
+
+    function restoreText(element) {
+        var imageContainer = element.querySelector('#image-container');
+        var soundcloudTextContainer = element.querySelector('#soundcloud-text-container');
+        imageContainer.style.display = 'none';
+        soundcloudTextContainer.style.display = 'inline';
+    }
+</script>
 </html>

@@ -111,24 +111,26 @@ body{
 }
 .field-top{
     font-size: 25px;
-    margin-left: 20%;
+    margin-left: 8%;
     margin-top: 5%;
+    display: flex;
 }
 .field-middle{
     margin-top: 40px;
-    margin-left: 20%;
+    margin-left: 30%;
 }
 .field-middle-name{
 
 }
 .field-middle-name-input{
-    width: 70%;
+    width: 50%;
     height: 40px;
     border-radius: 18px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
     outline: 0;
+    font-size: 15px;
 }
 .field-middle-name-input:focus{
     border: 3px solid #ff7700;
@@ -137,13 +139,15 @@ body{
     margin-top: 5%;
 }
 .field-middle-surname-input{
-    width: 70%;
+    width: 50%;
     height: 40px;
     border-radius: 18px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
     outline: 0;
+    font-size: 15px;
+
 }
 .field-middle-surname-input:focus{
     border: 3px solid #ff7700;
@@ -154,13 +158,15 @@ body{
 }
 
 .field-middle-email-input{
-    width: 70%;
+    width: 50%;
     height: 40px;
     border-radius: 18px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
     outline: 0;
+    font-size: 15px;
+
 }
 
 .field-middle-email-input:focus{
@@ -178,21 +184,82 @@ body{
     display: flex;
 }
 #radio1{
+    accent-color: #ff7700;
 }
 #radio2{
     margin-left: 20px;
+    accent-color: #ff7700;
 }
 #radio3{
     margin-left: 20px;
+    accent-color: #ff7700;
 }
 #radio4{
     margin-left: 20px;
+    accent-color: #ff7700;
 }
 #radio5{
     margin-left: 20px;
+    accent-color: #ff7700;
 }
 #radio6{
     margin-left: 20px;
+    accent-color: #ff7700;
+}
+.costum-donation{
+    margin-top: 2%;
+    margin-left: 55%;
+}
+#amount{
+    width: 30%;
+    height: 5%;
+    font-size: 15px;
+    border-radius: 18px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    transition: 0.5s;
+    outline: 0;
+    padding-left: 3%;
+}
+#amount:focus{
+    border: 3px solid #ff7700;
+}
+.field-middle-bottom{
+    width: 100%;
+    height: 10%;
+    margin-top: 3%;
+    margin-left: 25%;
+    display: flex;
+}
+.button-paypal{
+    border-radius: 5px;
+    width: 20%;
+    height: 100%;
+    border: solid;
+    border-width: 1px;
+    border-color: #000000;
+    background-color: #FCBB32;
+    color: #000000;
+}
+.button-paypal:hover{
+    cursor: pointer;
+}
+.img-paypal{
+    width: 40%;
+}
+.button-creditcard{
+    margin-left: 10%;
+    border-radius: 5px;
+    width: 20%;
+    height: 100%;
+    border: solid;
+    border-width: 1px;
+    border-color: #000000;
+    background-color: #ff7700;
+    color: #000000;
+}
+.button-creditcard:hover{
+    cursor: pointer;
 }
 .foot{
     width: 100%;
