@@ -39,11 +39,6 @@ body{
     background-color: #ff7700;
     cursor:pointer;
 }
-.top-artist{
-    padding-top: 0.6%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-}
 .top-link{
     color: #ffffff;
     text-decoration: none;
@@ -284,12 +279,19 @@ body{
     background-color: rgb(0, 0, 0);
 }
 
+.copyright {
+    text-align: center;
+    padding-top: 2%;
+    color: #ffffff;
+}
+
+.copyright-text {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 j{
     color: red;
-}
-.regi-link{
-    color:#000000;
-    text-decoration: none;
 }
 
 /* barva #ff7700
