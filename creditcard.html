@@ -7,8 +7,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="slike/nkbmicon.jpg" />
 	<link rel="stylesheet" href="css/creditcard.css" type="text/css" media="all" />		
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="main">
@@ -20,24 +20,24 @@
 				<div class="first-row">
 					<div class="cardnum">
 						<span class="text">CARD NUMBER</span><br>
-						<input class="inputcardnum" placeholder="7419 9412 5912 9218">
+						<input id="cardnumber" class="inputcardnum" placeholder="7419 9412 5912 9218" maxlength="19" pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}" required>
 					</div>
 					<div class="cvc">
 						<span class="text">CVC</span><br>
-						<input class="inputcvc" placeholder="253">
+						<input class="inputcvc" placeholder="253" maxlength="3" required>
 					</div>
 				</div>
 				<div class="second-row">
 					<div class="name">
 						<span class="text">CARD HOLDER NAME</span><br>
-						<input class="inputname" placeholder="John Davis Amadeus The Third">
+						<input class="inputname" placeholder="John Davis Amadeus The Third" maxlength="40" pattern="[a-zA-Z]+ [a-zA-Z]+$" required>
 					</div>
 				</div>
 				<div class="third-row">
 					<div class="exdate">
 						<span class="text">EXPERITION DATE</span><br>
 						<div class="datepick">
-							<select class="mounth">
+							<select class="month">
 								<option value="1">January</option>
 								<option value="2">February</option>
 								<option value="3">March</option>
@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<div>
-					<button class="button-comp">COMPLETE AND PAY!</button>
+					<button class="button-comp" onclick="closeMe()">COMPLETE AND PAY!</button>
 				</div>
 			</form>
 		</div>
@@ -73,5 +73,27 @@
 			<p>Please do not enter your real credit card details. This site is created solely for a school project and is not intended to be a phishing site in any way, shape, or form. P.S. Don't sue me. Thank you, and have a nice day. :)</p>
 		</div>
 	</div>
+	<script>
+		function closeMe(){
+			window.opener = self;
+			window.close();
+		}
+		const creditCardInput = document.getElementById("cardnumber");
+
+        creditCardInput.addEventListener("input", function () {
+            let value = this.value.replace(/\D/g, ''); 
+            let formattedValue = '';
+
+            for (let i = 0; i < value.length; i++) {
+                formattedValue += value[i];
+                if ((i + 1) % 4 === 0 && i < value.length - 1) {
+                    formattedValue += ' '; 
+                }
+            }
+
+            this.value = formattedValue;
+        });
+		
+	</script>
 </body>
 </html>

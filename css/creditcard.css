@@ -35,11 +35,17 @@ html{
 .inputcardnum{
     margin-top: 5%;
     border-radius: 5px;
-    border-style: none;
     height: 40px;
     width: 200px;
     font-size: 15px;
     padding-left: 8%;
+    outline: 0px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+.inputcardnum:focus{
+    border-color: green;
 }
 .cvc{
     margin-left: 10%;
@@ -48,11 +54,17 @@ html{
 .inputcvc{
     margin-top: 13%;
     padding-left: 20%;
-    border-style: none;
     border-radius: 5px;
     height: 40px;
     width: 70px;
     font-size: 15px;
+    outline: 0px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+.inputcvc:focus{
+    border-color: green;
 }
 .second-row{
     margin-top: 5%;
@@ -63,11 +75,18 @@ html{
 .inputname{
     margin-top: 2%;
     border-radius: 5px;
-    border-style: none;
     height: 40px;
     width: 315px;
     font-size: 15px;
     padding-left: 4%;
+    outline: 0px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    transition: 0.5s;
+    text-transform: capitalize;
+}
+.inputname:focus{
+    border-color: green;
 }
 .exdate{
     margin-top: 5%;
@@ -76,37 +95,50 @@ html{
 .datepick{
     margin-top: 2%;
 }
-.mounth{
+.month{
     border-radius: 5px;
-    border-style: none;
     height: 40px;
     width: 120px;
     padding-left: 10px;
     font-size: 15px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+.month:focus{
+    border-color: green;
 }
 .year{
     border-radius: 5px;
     margin-left: 10px;
-    border-style: none;
     height: 40px;
     width: 80px;
     padding-left: 10px;
     font-size: 15px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+.year:focus{
+    border-color: green;
 }
 .button-comp{
     margin-left: 40px;
     margin-top: 40px;
     height: 50px;
     width: 270px;
-    border: none;
     border-radius: 5px;
     background-color: darkgreen;
     color: white;
     font-size: 15px;
     font-weight: 600;
+    border-style: solid;
+    border-color: darkgreen;
+    transition: 0.5s;
 }
 .button-comp:hover{
     cursor: pointer;
+    border-color: green;
 }
 .dontsueme{
     margin-top: 80px;
