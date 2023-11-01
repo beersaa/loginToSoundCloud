@@ -112,17 +112,33 @@ v{
     border-radius: 18px;
     opacity: 0.9;
 }
+
 .field-top{
     font-size: 25px;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-top: 5%;
     display: flex;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+#thank-you-text {
+    position: absolute;
+    top: 5%;
+    left: 23%;
 }
 
+#thank-you-text img {
+    display: block;
+    margin: 0 auto;
+}
+.smooth-fade {
+    transition: opacity 2s;
+}
 .field-middle{
     margin-top: 40px;
     margin-left: 30%;
 }
+
 .field-middle-name{
 
 }
@@ -214,10 +230,10 @@ v{
 }
 .costum-donation{
     margin-top: 2%;
-    margin-left: 55%;
+    margin-left: 60%;
 }
 #amount{
-    width: 30%;
+    width: 35%;
     height: 5%;
     font-size: 15px;
     border-radius: 18px;
@@ -225,7 +241,7 @@ v{
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
     outline: 0;
-    padding-left: 3%;
+    padding-left: 5%;
 }
 #amount:focus{
     border: 3px solid #ff7700;

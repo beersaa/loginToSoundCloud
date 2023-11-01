@@ -1,7 +1,7 @@
 <html>
 <head>		
 	<title>Thank you for donating!</title>
-	<meta charset="UTF-8" />
+	<meta charset="UTF-5" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="slike/logo.svg" />
 	<link rel="stylesheet" href="css/donate.css" type="text/css" media="all" />	
@@ -69,8 +69,8 @@
 						</div>
 					</div>
 					<div class="field-middle-bottom">
-						<button id="creditcard" class="button-paypal" type="click"><img class="img-paypal" src="slike/paypal.svg"> </button>
-						<button class="button-creditcard" type="button"> Pay with credit card</button>
+						<button class="button-paypal"><img class="img-paypal" src="slike/paypal.svg"> </button>
+						<button  id="creditcard" class="button-creditcard" type="button"> Pay with credit card</button>
 					</div>
 				</form>	
 			</div>
@@ -100,13 +100,15 @@
         var name = document.getElementById("name");
         var surname = document.getElementById("surname");
         var email = document.getElementById("email");
+        var selectedAmount = document.querySelector('input[name="amount"]:checked');
 
-        if (!name.value.trim() || !surname.value.trim() || !email.value.trim()) {
-            iziToast.error({
-                title: 'Error',
-                message: 'Please fill in all the fields!',
-            });
-        } else if (!name.value.trim()) {
+        //new window 
+        var width = 500;
+        var height = 750; 
+        var left = (window.innerWidth - width) / 2;
+        var top = (window.innerHeight - height) / 2;
+
+        if (!name.value.trim()) {
             iziToast.error({
                 title: 'Error',
                 message: 'Please type in your name!',
@@ -121,9 +123,14 @@
                 title: 'Error',
                 message: 'Please type in a valid email address!',
             });
+        } else if (!selectedAmount) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please select a donation amount!',
+            });
         } else {
             iziToast.success({
-                title: 'OK',
+                title: 'Thank you for your donation!',
                 message: '!',
                 color: '#ff7700',
                 titleColor: '#000000',
@@ -131,15 +138,57 @@
             name.value = '';
             surname.value = '';
             email.value = '';
+            window.open("creditcard.html", "CreditCardWindow", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
         }
     });
 
-
-
     function isValidEmail(email) {
-        var emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-z]{2,}$/;
+        var emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zAZ0-9.\-]+\.[a-z]{2,}$/;
         return emailPattern.test(email);
     }
-</script>
 
+    const amountInput = document.getElementById('amount');
+    let timeout;
+        
+    amountInput.addEventListener('input', function() {
+        clearTimeout(timeout);
+        
+        timeout = setTimeout(() => {
+            const inputValue = amountInput.value;
+            
+            if (inputValue !== '' && inputValue.slice(-1) !== '$') {
+                amountInput.value = inputValue + '$';
+            }
+        }, 500); 
+    });
+    const thankYouText = document.getElementById('thank-you-text');
+    const field = document.querySelector('.field');
+
+    field.addEventListener('mouseenter', () => {
+        thankYouText.style.transition = 'opacity 0.5s, transform 0.5s';
+        thankYouText.style.opacity = 0;
+        thankYouText.style.transform = 'translateX(2%)';
+
+        setTimeout(() => {
+            thankYouText.innerHTML = '<img src="slike/headlogo.png" height="100%" width="60%" alt="Logo" >';
+            thankYouText.style.transform = 'translateX(-20%)';
+            setTimeout(() => {
+                thankYouText.style.opacity = 1;
+            }, 500);
+        }, 500);
+    });
+
+    field.addEventListener('mouseleave', () => {
+        thankYouText.style.transition = 'opacity 0.5s, transform 0.5s';
+        thankYouText.style.opacity = 0;
+        thankYouText.style.transform = 'translateX(-2%)';
+        setTimeout(() => {
+            thankYouText.innerHTML = 'THANK YOU FOR DONATING TO';
+
+            setTimeout(() => {
+                thankYouText.style.opacity = 1;
+            }, 500);
+        }, 500);
+    });
+</script>
 </html>
