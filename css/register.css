@@ -294,6 +294,9 @@ j{
     color: red;
 }
 
+input:focus{
+    border: 2px solid #ff7700;
+}
 /* barva #ff7700
 
 *\

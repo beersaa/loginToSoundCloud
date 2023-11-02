@@ -65,11 +65,11 @@
                 			<span id="radio6"><input id="radio6b" type="radio" value="0" name="amount" onchange="toggleCustomAmount(this)">Custom amount</span>
 						</div>
 						<div class="costum-donation">
-							<input id="amount" type="text" placeholder="100$" maxlength="6" disabled>
+							<input id="amount" type="number" placeholder="100$" maxlength="6" disabled>
 						</div>
 					</div>
 					<div class="field-middle-bottom">
-						<button class="button-paypal"><img class="img-paypal" src="slike/paypal.svg"> </button>
+						<button id="paypal" class="button-paypal"><img class="img-paypal" src="slike/paypal.svg"> </button>
 						<button  id="creditcard" class="button-creditcard" type="button"> Pay with credit card</button>
 					</div>
 				</form>	
@@ -95,6 +95,44 @@
         }
     }
 
+    document.getElementById('paypal').addEventListener('click', function (event) {
+        event.preventDefault();
+        var name = document.getElementById("name");
+        var surname = document.getElementById("surname");
+        var email = document.getElementById("email");
+        var selectedAmount = document.querySelector('input[name="amount"]:checked');
+
+        if (!name.value.trim()) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please type in your name!',
+            });
+        } else if (!surname.value.trim()) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please type in your surname!',
+            });
+        } else if (!email.value.trim() || !isValidEmail(email.value)) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please type in a valid email address!',
+            });
+        } else if (!selectedAmount) {
+            iziToast.error({
+                title: 'Error',
+                message: 'Please select a donation amount!',
+            });
+        } else {
+            iziToast.info({
+                message: 'Coming soon!',
+                titleColor: '#000000',
+            });
+            name.value = '';
+            surname.value = '';
+            email.value = '';
+        }
+    });
+
     document.getElementById('creditcard').addEventListener('click', function (event) {
         event.preventDefault();
         var name = document.getElementById("name");
@@ -102,7 +140,6 @@
         var email = document.getElementById("email");
         var selectedAmount = document.querySelector('input[name="amount"]:checked');
 
-        //new window 
         var width = 500;
         var height = 750; 
         var left = (window.innerWidth - width) / 2;
@@ -129,6 +166,7 @@
                 message: 'Please select a donation amount!',
             });
         } else {
+            window.open("creditcard.html", "CreditCardWindow", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
             iziToast.success({
                 title: 'Thank you for your donation!',
                 message: '!',
@@ -138,7 +176,6 @@
             name.value = '';
             surname.value = '';
             email.value = '';
-            window.open("creditcard.html", "CreditCardWindow", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
         }
     });
 

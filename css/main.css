@@ -118,10 +118,12 @@ body {
 
 .field-top {
     font-size: 30px;
+    line-height: 50px;
     text-align: center;
     margin-top: 5%;
     opacity: 1;
     transition: opacity 0.5s;
+    overflow: hidden;
 }
 .smooth-fade {
     transition: opacity 2s;
@@ -200,11 +202,12 @@ body {
 }
 
 .input-user:focus {
-    border: 3px solid #ff7700;
+    border: 2px solid #ff7700;
+    outline: none;
 }
 
 .input-password:focus {
-    border: 3px solid #ff7700;
+    border: 2px solid #ff7700;
 }
 
 .button-login:hover {
