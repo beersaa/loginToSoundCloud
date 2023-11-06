@@ -39,11 +39,11 @@
                     <div class="field-login-input">
                         <div class="field-login-input-user">
                             <label for="user">Username:</label><br>
-                            <input id="user" class="input-user" type="text" name="username" required maxlength="20"><br>
+                            <input id="user" class="input-user" type="text" name="username" maxlength="20"><br>
                         </div>
                         <div class="field-login-input-pass">
                             <label for="pass">Password:</label><br>
-                            <input id="pass" class="input-password" type="password" name="password" required maxlength="20"><br>
+                            <input id="pass" class="input-password" type="password" name="password" maxlength="20"><br>
                         </div>
                     </div>
                     <div class="field-login-down">
@@ -69,32 +69,23 @@
     <script>
         const loginText = document.getElementById('loginText');
         const field = document.querySelector('.field');
-
-        field.addEventListener('mouseenter', () => {
-            loginText.style.opacity = 0; 
+        
+        loginText.style.opacity = 0;
+    
+        window.addEventListener('load', () => {
             setTimeout(() => {
                 loginText.innerHTML = '<img src="slike/headlogo.png" height="30%" width="60%" alt="Logo">';
                 setTimeout(() => {
-                    loginText.style.opacity = 1; 
-                }, 500); 
-            }, 500); 
-        });
-
-        field.addEventListener('mouseleave', () => {
-            loginText.style.opacity = 0; 
-            setTimeout(() => {
-                loginText.innerHTML = 'LOGIN';
-                setTimeout(() => {
-                    loginText.style.opacity = 1; 
+                    loginText.style.opacity = 1;
                 }, 500);
-            }, 500); 
+            }, 500);
         });
-
+    
         document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var user = document.getElementById("user");
             var pass = document.getElementById("pass");
-            
+    
             if (!user.value.trim()) {
                 iziToast.error({
                     title: 'Error',
@@ -117,5 +108,6 @@
             }
         });
     </script>
+    
 </body>
 </html>

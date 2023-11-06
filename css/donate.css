@@ -145,7 +145,7 @@ v{
 .field-middle-name-input{
     width: 50%;
     height: 40px;
-    border-radius: 18px;
+    border-radius: 9px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
@@ -162,7 +162,7 @@ v{
 .field-middle-surname-input{
     width: 50%;
     height: 40px;
-    border-radius: 18px;
+    border-radius: 9px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
@@ -182,7 +182,7 @@ v{
 .field-middle-email-input{
     width: 50%;
     height: 40px;
-    border-radius: 18px;
+    border-radius: 9px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;
@@ -236,7 +236,7 @@ v{
     width: 35%;
     height: 5%;
     font-size: 15px;
-    border-radius: 18px;
+    border-radius: 9px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
     transition: 0.5s;

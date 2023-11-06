@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>		
-	<title>Pay!</title>
-	<meta charset="UTF-8" />
+<head>
+    <title>Pay!</title>
+    <meta charset="UTF-8" />
 
-	<link rel="shortcut icon" type="image/x-icon" href="slike/nkbmicon.jpg" />
-	<link rel="stylesheet" href="css/creditcard.css" type="text/css" media="all" />		
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="slike/nkbmicon.jpg" />
+    <link rel="stylesheet" href="css/creditcard.css" type="text/css" media="all" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="main">
-		<div class="logo">
-			<img src="slike/novaKBM.png" height="70">
-		</div>
-		<div class="card">
-			<form>
-				<div class="first-row">
-					<div class="cardnum">
-						<span class="text">CARD NUMBER</span><br>
-						<input id="cardnumber" class="inputcardnum" placeholder="7419 9412 5912 9218" maxlength="19" pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}" required>
-					</div>
-					<div class="cvc">
-						<span class="text">CVC</span><br>
-						<input class="inputcvc" placeholder="253" maxlength="3" required>
-					</div>
-				</div>
-				<div class="second-row">
-					<div class="name">
-						<span class="text">CARD HOLDER NAME</span><br>
-						<input class="inputname" placeholder="John Davis Amadeus The Third" maxlength="40" pattern="[a-zA-Z]+ [a-zA-Z]+$" required>
-					</div>
-				</div>
-				<div class="third-row">
-					<div class="exdate">
-						<span class="text">EXPERITION DATE</span><br>
-						<div class="datepick">
-							<select class="month">
+    <div class="main">
+        <div class="logo">
+            <img src="slike/novaKBM.png" height="70">
+        </div>
+        <div class="card">
+            <form onsubmit="return validateForm()">
+                <div class="first-row">
+                    <div class="cardnum">
+                        <span class="text">CARD NUMBER</span><br>
+                        <input id="cardnumber" class="inputcardnum" placeholder="7419 9412 5912 9218" maxlength="19" pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}" required>
+                    </div>
+                    <div class="cvc">
+                        <span class="text">CVC</span><br>
+                        <input id="cvc" class="inputcvc" placeholder="253" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="second-row">
+                    <div class="name">
+                        <span class="text">CARD HOLDER NAME</span><br>
+                        <input id="cardholder" class="inputname" placeholder="John Davis Amadeus The Third" maxlength="40" pattern="[a-zA-Z]+ [a-zA-Z]+$" required>
+                    </div>
+                </div>
+                <div class="third-row">
+                    <div class="exdate">
+                        <span class="text">EXPIRATION DATE</span><br>
+                        <div class="datepick">
+                            <select id="month" class="month" required>
+                                <option value="">Month</option>
 								<option value="1">January</option>
 								<option value="2">February</option>
 								<option value="3">March</option>
@@ -50,8 +51,9 @@
 								<option value="10">October</option>
 								<option value="11">November</option>
 								<option value="12">December</option>
-							</select>
-							<select class="year">
+                            </select>
+                            <select id="year" class="year" required>
+                                <option value="">Year</option>
 								<option value="2023">2023</option>
 								<option value="2024">2024</option>
 								<option value="2025">2025</option>
@@ -60,40 +62,59 @@
 								<option value="2028">2028</option>
 								<option value="2029">2029</option>
 								<option value="2030">2030</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div>
-					<button class="button-comp" onclick="closeMe()">COMPLETE AND PAY!</button>
-				</div>
-			</form>
-		</div>
-		<div class="dontsueme">
-			<p>Please do not enter your real credit card details. This site is created solely for a school project and is not intended to be a phishing site in any way, shape, or form. P.S. Don't sue me. Thank you, and have a nice day. :)</p>
-		</div>
-	</div>
-	<script>
-		function closeMe(){
-			window.opener = self;
-			window.close();
-		}
-		const creditCardInput = document.getElementById("cardnumber");
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="button-comp" type="submit">COMPLETE AND PAY!</button>
+                </div>
+            </form>
+            <div id="error-message" style="color: red;"></div>
+        </div>
+        <div class="dontsueme">
+            <p>Please do not enter your real credit card details. This site is created solely for a school project and is not intended to be a phishing site in any way, shape, or form. P.S. Don't sue me. Thank you, and have a nice day. :)</p>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            const cardNumber = document.getElementById("cardnumber");
+            const cvc = document.getElementById("cvc");
+            const cardHolder = document.getElementById("cardholder");
+            const month = document.getElementById("month");
+            const year = document.getElementById("year");
+            const errorMessage = document.getElementById("error-message");
+
+            if (!cardNumber.checkValidity() || !cvc.checkValidity() || !cardHolder.checkValidity() || !month.checkValidity() || !year.checkValidity()) {
+                errorMessage.textContent = "Please fill in all fields correctly.";
+                return false;
+            } else {
+                errorMessage.textContent = "";
+                closeWindow();
+                return true;
+            }
+        }
+
+        const creditCardInput = document.getElementById("cardnumber");
 
         creditCardInput.addEventListener("input", function () {
-            let value = this.value.replace(/\D/g, ''); 
+            let value = this.value.replace(/\D/g, '');
             let formattedValue = '';
 
             for (let i = 0; i < value.length; i++) {
                 formattedValue += value[i];
                 if ((i + 1) % 4 === 0 && i < value.length - 1) {
-                    formattedValue += ' '; 
+                    formattedValue += ' ';
                 }
             }
 
             this.value = formattedValue;
         });
-		
-	</script>
+
+        function closeWindow() {
+            window.opener = self;
+            window.close();
+        }
+    </script>
 </body>
 </html>
