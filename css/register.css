@@ -1,12 +1,12 @@
 body{
     margin: 0%;
     padding: 0%;
+    overflow: hidden;
 }
 .main{
     width: 100%;
     height: 100%;
-    background-image: url("../slike/regi.jpg");
-    background-size: cover;
+    background-image: url("../slike/background.jpg");
     flex: 1;
     position:absolute;
     font-family: 'Inter', sans-serif;

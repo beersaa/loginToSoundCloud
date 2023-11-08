@@ -107,6 +107,24 @@
                 pass.value = '';
             }
         });
+        document.addEventListener('DOMContentLoaded', function () {
+            var signUpButton = document.querySelector('.button-register');
+
+            if (signUpButton) {
+                signUpButton.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    document.body.style.backgroundColor = 'black';
+
+                    document.body.style.transition = 'opacity 1s ease-in-out';
+                    document.body.style.opacity = 0;
+
+                    setTimeout(function () {
+                        window.location.href = 'register.html';
+                    }, 500);
+                });
+            }
+        });
     </script>
     
 </body>

@@ -8,7 +8,7 @@ v{
 .main{
     width: 100%;
     height: 100%;
-    background-image: url("../slike/donate.jpeg");
+    background-image: url("../slike/background.jpg");
     font-family: 'Inter', sans-serif;
     flex: 1;
     position: absolute;
