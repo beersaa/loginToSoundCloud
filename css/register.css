@@ -2,6 +2,7 @@ body{
     margin: 0%;
     padding: 0%;
     overflow: hidden;
+    opacity: 0;
 }
 .main{
     width: 100%;
@@ -29,7 +30,7 @@ body{
 
 .top-donate{
     padding-top: 0.6%;
-    border-width: 1px;
+    font-size: 100%;
     padding-left: 0.5%;
     padding-right: 0.5%;
     color: #ffffff;
@@ -46,9 +47,9 @@ body{
 .top-right{
     display: flex;
     position: absolute;
-    right: 0px;
+    right: 0%;
     margin-right: 2%;
-    margin-top: 8px;  
+    margin-top: 0.5%;  
 }
 .top-login{
     padding-right: 20%;
@@ -73,6 +74,7 @@ body{
 }
 .top-signup-button{
     background-color: #ff7700;
+    white-space: nowrap;
     color: #000000;
     border-radius: 10px;
     border: none;
@@ -118,6 +120,7 @@ body{
     
 }
 .field-middle-row1-name-input{
+    text-transform: capitalize;
     width: 100%;
     height: 80%;
     border-radius: 9px;
@@ -130,6 +133,7 @@ body{
     padding-left: 20%;
 }
 .field-middle-row1-lastname-input{
+    text-transform: capitalize;
     width: 100%;
     height: 80%;
     border-radius: 9px;
@@ -187,6 +191,7 @@ body{
     padding-left: 20%;
 }
 .field-middle-row3-address-input{
+    text-transform: capitalize;
     width: 100%;
     height: 80%;
     border-radius: 9px;

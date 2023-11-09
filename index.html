@@ -48,7 +48,7 @@
                     </div>
                     <div class="field-login-down">
                         <div class="field-login-down-register">
-                            <a class="top-link" href="register.html">
+                            <a class="top-link">
                                 <button id="reg" class="button-register" type="button" role="button">SIGN UP</button>
                             </a>
                         </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="foot">
             <div class="copyright">
-                <a href="https://github.com/beersaa" class="copyright-text" target="_blank">©</a> copyright by AB
+                <a class="copyright-text" target="_blank">©</a> copyright by AB
             </div>
         </div>
     </div>
@@ -70,15 +70,16 @@
         const loginText = document.getElementById('loginText');
         const field = document.querySelector('.field');
         
-        loginText.style.opacity = 0;
-    
+        setTimeout(() => {
+            loginText.style.opacity = 0;
+        }, 1000);
         window.addEventListener('load', () => {
             setTimeout(() => {
                 loginText.innerHTML = '<img src="slike/headlogo.png" height="30%" width="60%" alt="Logo">';
                 setTimeout(() => {
                     loginText.style.opacity = 1;
-                }, 500);
-            }, 500);
+                }, 1000);
+            }, 1500);
         });
     
         document.getElementById('loginForm').addEventListener('submit', function (event) {
@@ -108,6 +109,21 @@
             }
         });
         document.addEventListener('DOMContentLoaded', function () {
+            document.body.style.backgroundColor = 'black';
+            document.body.style.transition = 'opacity 1s ease-in-out';
+            document.body.style.opacity = 1;
+
+            var copyRight = document.querySelector('.copyright-text');
+
+            if (copyRight){
+                signUpButton.addEventListener('click', function (event) {
+                    iziToast.info({
+                        title:'Credits',
+                        message:'Made by AB 4.Ra',
+                    });
+                });
+            }
+
             var signUpButton = document.querySelector('.button-register');
 
             if (signUpButton) {
@@ -116,12 +132,60 @@
 
                     document.body.style.backgroundColor = 'black';
 
-                    document.body.style.transition = 'opacity 1s ease-in-out';
+                    document.body.style.transition = 'opacity 0.5s ease-in-out';
                     document.body.style.opacity = 0;
 
                     setTimeout(function () {
                         window.location.href = 'register.html';
-                    }, 500);
+                    }, 1000);
+                });
+            }
+            var topLogin = document.querySelector('.top-login');
+
+            if (topLogin) {
+                topLogin.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    document.body.style.backgroundColor = 'black';
+
+                    document.body.style.transition = 'opacity 0.5s ease-in-out';
+                    document.body.style.opacity = 0;
+
+                    setTimeout(function () {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                });
+            }
+            var topSignup = document.querySelector('.top-signup');
+
+            if (topSignup) {
+                topSignup.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    document.body.style.backgroundColor = 'black';
+
+                    document.body.style.transition = 'opacity 0.5s ease-in-out';
+                    document.body.style.opacity = 0;
+
+                    setTimeout(function () {
+                        window.location.href = 'register.html';
+                    }, 1000);
+                });
+            }
+            var topDonate = document.querySelector('.top-donate');
+
+            if (topDonate) {
+                topDonate.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    document.body.style.backgroundColor = 'black';
+
+                    document.body.style.transition = 'opacity 0.5s ease-in-out';
+                    document.body.style.opacity = 0;
+
+                    setTimeout(function () {
+                        window.location.href = 'donate.html';
+                    }, 1000);
                 });
             }
         });

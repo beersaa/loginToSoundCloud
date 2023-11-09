@@ -1,9 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-}
-html{
-    scroll-behavior: smooth;
+    opacity: 0;
 }
 .main {
     width: 100%;
@@ -34,7 +32,7 @@ html{
 
 .top-donate {
     padding-top: 0.6%;
-    border-width: 1px;
+    font-size: 100%;
     padding-left: 0.5%;
     padding-right: 0.5%;
     color: #ffffff;
@@ -54,9 +52,9 @@ html{
 .top-right {
     display: flex;
     position: absolute;
-    right: 0px;
+    right: 0%;
     margin-right: 2%;
-    margin-top: 8px;
+    margin-top: 0.5%;
 }
 
 .top-login {
@@ -86,6 +84,7 @@ html{
 
 .top-signup-button {
     background-color: #ff7700;
+    white-space: nowrap;
     color: #000000;
     border-radius: 10px;
     border: none;
