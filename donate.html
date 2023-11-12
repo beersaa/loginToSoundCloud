@@ -226,6 +226,10 @@
                 color: '#ff7700',
                 titleColor: '#000000',
             });
+            var radioButtons = form.querySelectorAll('input[type="radio"]');
+                for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].checked = false;
+            }
             name.value = '';
             surname.value = '';
             email.value = '';

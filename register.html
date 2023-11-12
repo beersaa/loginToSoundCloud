@@ -64,7 +64,7 @@
                         <div class="field-middle-row3">
                             <div class="field-middle-row3-number">
                                 Number:<j>*</j><br>
-                                <input class="field-middle-row3-number-input" type="text" required>
+                                <input class="field-middle-row3-number-input" type="text" required maxlength="9">
                             </div>
                             <div class="field-middle-row3-address">
                                 Address:<j>*</j><br>
@@ -178,55 +178,72 @@
             var buttonRegi = document.querySelector('.button-regi');
             if (buttonRegi) {
                 buttonRegi.addEventListener('click', function () {
-                var form = document.getElementById("registrationForm");
-                var name = form.querySelector('.field-middle-row1-name-input');
-                var lastname = form.querySelector('.field-middle-row1-lastname-input');
-                var username = form.querySelector('.field-middle-row2-username-input');
-                var email = form.querySelector('.field-middle-row2-email-input');
-                var number = form.querySelector('.field-middle-row3-number-input');
-                var address = form.querySelector('.field-middle-row3-address-input');
-                var password = form.querySelector('.field-middle-row4-password-input');
-                var passwordconf = form.querySelector('.field-middle-row4-passwordconf-input');
-                var checkbox = form.querySelector('.field-middle-licence-checkbox');
-                var errorMessage = document.getElementById('errorMessage'); // Assuming you have an element with the id 'errorMessage'
+                    var form = document.getElementById("registrationForm");
+                    var name = form.querySelector('.field-middle-row1-name-input');
+                    var lastname = form.querySelector('.field-middle-row1-lastname-input');
+                    var username = form.querySelector('.field-middle-row2-username-input');
+                    var email = form.querySelector('.field-middle-row2-email-input');
+                    var number = form.querySelector('.field-middle-row3-number-input');
+                    var address = form.querySelector('.field-middle-row3-address-input');
+                    var password = form.querySelector('.field-middle-row4-password-input');
+                    var passwordconf = form.querySelector('.field-middle-row4-passwordconf-input');
+                    var checkbox = form.querySelector('.field-middle-licence-checkbox');
 
-                errorMessage.textContent = ''; // Resetting the error message on each click
-
-                if (
-                    !name.value.trim() ||
-                    !lastname.value.trim() ||
-                    !username.value.trim() ||
-                    !email.value.trim() ||
-                    !number.value.trim() ||
-                    !address.value.trim() ||
-                    !password.value.trim() ||
-                    !passwordconf.value.trim() ||
-                    !checkbox.checked
-                ) {
-                    errorMessage.textContent = 'Please fill all the fields';
-                } else if (!/^[a-zA-Z]+$/.test(name.value) || !/^[a-zA-Z]+$/.test(lastname.value)) {
-                    errorMessage.textContent = 'Name and Lastname must contain only letters';
-                } else if (!/^[a-zA-Z0-9_]+$/.test(username.value)) {
-                    errorMessage.textContent = 'Username must contain only letters, numbers, or underscores';
-                } else if (!/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/.test(email.value)) {
-                    errorMessage.textContent = 'Please enter a valid email address';
-                } else if (!/^[0-9]{9}$/.test(number.value)) {
-                    errorMessage.textContent = 'Please enter a valid 9-digit number';
-                } else if (password.value !== passwordconf.value) {
-                    errorMessage.textContent = 'Password and Confirm Password must match';
-                } else {
-                    iziToast.success({
+                    if (
+                        !name.value.trim() ||
+                        !lastname.value.trim() ||
+                        !username.value.trim() ||
+                        !email.value.trim() ||
+                        !number.value.trim() ||
+                        !address.value.trim() ||
+                        !password.value.trim() ||
+                        !passwordconf.value.trim() ||
+                        !checkbox.checked
+                    ) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Please fill all the fields',
+                        });
+                    } else if (!/^[a-zA-Z]+$/.test(name.value) || !/^[a-zA-Z]+$/.test(lastname.value)) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Name and Lastname must contain only letters',
+                        });
+                    } else if (!/^[a-zA-Z0-9_]+$/.test(username.value)) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Username must contain only letters, numbers, or underscores',
+                        });
+                    } else if (!/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/.test(email.value)) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Please enter a valid email address',
+                        });
+                    } else if (!/^[0-9]{9}$/.test(number.value)) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Please enter a valid 9-digit number',
+                        });
+                    } else if (password.value !== passwordconf.value) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Password and Confirm Password must match',
+                        });
+                    } else {
+                        iziToast.success({
                             title: 'OK',
                             message: 'Successfully registered!',
                             color: '#ff7700',
                             titleColor: '#000000',
                         });
-                    form.reset();
+                        var radioButtons = form.querySelectorAll('input[type="radio"]');
+                        for (var i = 0; i < radioButtons.length; i++) {
+                            radioButtons[i].checked = false;
+                        }
+                        form.reset();
+                    }
                 }
-            });
-
-            }
-
+            )}
         });
     </script>
 </body>

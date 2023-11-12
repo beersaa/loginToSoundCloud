@@ -39,7 +39,7 @@
                     <div class="field-login-input">
                         <div class="field-login-input-user">
                             <label for="user">Username:</label><br>
-                            <input id="user" class="input-user" type="text" name="username" maxlength="20"><br>
+                            <input id="user" class="input-user" type="text" name="username" maxlength="40"><br>
                         </div>
                         <div class="field-login-input-pass">
                             <label for="pass">Password:</label><br>
@@ -49,11 +49,11 @@
                     <div class="field-login-down">
                         <div class="field-login-down-register">
                             <a class="top-link">
-                                <button id="reg" class="button-register" type="button" role="button">SIGN UP</button>
+                                <button class="button-register" type="button">SIGN UP</button>
                             </a>
                         </div>
                         <div class="field-login-down-submit">
-                            <button class="button-login" type="submit">LOGIN</button>
+                            <button id="loginButton" class="button-login" type="submit">LOGIN</button>
                         </div>
                     </div>
                 </form>
@@ -67,59 +67,18 @@
     </div>
     <script src="javascript/iziToast.min.js" type="text/javascript"></script>
     <script>
-        const loginText = document.getElementById('loginText');
-        const field = document.querySelector('.field');
-        
-        setTimeout(() => {
-            loginText.style.opacity = 0;
-        }, 1000);
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loginText.innerHTML = '<img src="slike/headlogo.png" height="30%" width="60%" alt="Logo">';
-                setTimeout(() => {
-                    loginText.style.opacity = 1;
-                }, 1000);
-            }, 1500);
-        });
-    
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            var user = document.getElementById("user");
-            var pass = document.getElementById("pass");
-    
-            if (!user.value.trim()) {
-                iziToast.error({
-                    title: 'Error',
-                    message: 'Please type in your username!',
-                });
-            } else if (!pass.value.trim()) {
-                iziToast.error({
-                    title: 'Error',
-                    message: 'Please type in your password!',
-                });
-            } else {
-                iziToast.success({
-                    title: 'OK',
-                    message: 'Successfully logged in!',
-                    color: '#ff7700',
-                    titleColor: '#000000',
-                });
-                user.value = '';
-                pass.value = '';
-            }
-        });
         document.addEventListener('DOMContentLoaded', function () {
             document.body.style.backgroundColor = 'black';
             document.body.style.transition = 'opacity 1s ease-in-out';
             document.body.style.opacity = 1;
-
+            
             var copyRight = document.querySelector('.copyright-text');
 
-            if (copyRight){
-                signUpButton.addEventListener('click', function (event) {
+            if (copyRight) {
+                copyRight.addEventListener('click', function (event) {
                     iziToast.info({
-                        title:'Credits',
-                        message:'Made by AB 4.Ra',
+                        title: 'Credits',
+                        message: 'Made by AB 4.Ra',
                     });
                 });
             }
@@ -189,7 +148,50 @@
                 });
             }
         });
+
+        const loginText = document.getElementById('loginText');
+        const field = document.querySelector('.field');
+
+        setTimeout(() => {
+            loginText.style.opacity = 0;
+        }, 1000);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loginText.innerHTML = '<img src="slike/headlogo.png" height="30%" width="60%" alt="Logo">';
+                setTimeout(() => {
+                    loginText.style.opacity = 1;
+                }, 1000);
+            }, 1500);
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            var user = document.getElementById("user");
+            var pass = document.getElementById("pass");
+
+            if (!user.value.trim()) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please type in your username!',
+                });
+            } else if (!pass.value.trim()) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please type in your password!',
+                });
+            } else {
+                iziToast.success({
+                    title: 'OK',
+                    message: 'Successfully logged in!',
+                    color: '#ff7700',
+                    titleColor: '#000000',
+                });
+                user.value = '';
+                pass.value = '';
+            }
+        });
+
     </script>
-    
 </body>
 </html>
