@@ -36,7 +36,7 @@
 			<div class="field">
 				<form id="form">
 					<div class="field-top">
-						<div id="thank-you-text">THANK YOU FOR DONATING TO</div>
+						<div id="thank-you-text"><img src="slike/headlogo.png" height="80%" width="60%" alt="Logo" ></div>
 					</div>
 					<div class="field-middle">
 						<div class="field-middle-name">
@@ -258,10 +258,10 @@
     const thankYouText = document.getElementById('thank-you-text');
     const field = document.querySelector('.field');
 
-    field.addEventListener('mouseenter', () => {
+    field.addEventListener('mouseleave', () => {
         thankYouText.style.transition = 'opacity 0.5s, transform 0.5s';
         thankYouText.style.opacity = 0;
-        thankYouText.style.transform = 'translateX(2%)';
+        thankYouText.style.transform = 'translateX(-2%)';
 
         setTimeout(() => {
             thankYouText.innerHTML = '<img src="slike/headlogo.png" height="100%" width="60%" alt="Logo" >';
@@ -272,12 +272,15 @@
         }, 500);
     });
 
-    field.addEventListener('mouseleave', () => {
+    field.addEventListener('mouseenter', () => {
+
         thankYouText.style.transition = 'opacity 0.5s, transform 0.5s';
         thankYouText.style.opacity = 0;
-        thankYouText.style.transform = 'translateX(-2%)';
+        thankYouText.style.transform = 'translateX(2%)';
+
+        
         setTimeout(() => {
-            thankYouText.innerHTML = 'THANK YOU FOR DONATING TO';
+            thankYouText.innerHTML = 'THANK YOU FOR DONATING';
 
             setTimeout(() => {
                 thankYouText.style.opacity = 1;
