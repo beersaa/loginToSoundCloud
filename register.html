@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/iziToast.min.css">
     <script src="javascript/iziToast.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    
 </head>
 <body>
     <div class="main">
@@ -74,11 +76,11 @@
                         <div class="field-middle-row4">
                             <div class="field-middle-row4-password">
                                 Password:<j>*</j><br>
-                                <input class="field-middle-row4-password-input" type="password"  required>
+                                <input class="field-middle-row4-password-input" type="password" maxlength="20" required>
                             </div>
                             <div class="field-middle-row4-passwordconf">
                                 Confirm password:<j>*</j><br>
-                                <input class="field-middle-row4-passwordconf-input" type="password" required>
+                                <input class="field-middle-row4-passwordconf-input" type="password" maxlength="20" required>
                             </div>
                         </div>
                         <div class="field-middle-licence">
@@ -102,12 +104,32 @@
         </div>
         <div class="foot">
             <div class="copyright">
-                <a href="https://github.com/beersaa" class="copyright-text" target="_blank">©</a> copyright by AB
+                <a class="copyright-text" target="_blank">©</a> copyright by AB
             </div>
         </div>
     </div>
+    <script src="javascript/sweetalert2.min.js" type="text/javascript"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            var copyRight = document.querySelector('.copyright-text');
+
+            if (copyRight) {
+                copyRight.addEventListener('click', function (event) {
+                    Swal.fire({
+                        title: "Made by AB",
+                        text: "https://github.com/beersaa",
+                        icon: "info",
+                        iconColor:"#ff7700",
+                        confirmButtonColor:"#ff7700",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("/slike/secret.gif")
+                        left top
+                        no-repeat
+                        `
+                    });
+                });
+            }
             var returnBack = document.querySelector('.button-return');
             if (returnBack) {
                 returnBack.addEventListener('click', function (event) {
@@ -204,7 +226,7 @@
                             title: 'Error',
                             message: 'Please fill all the fields',
                         });
-                    } else if (!/^[a-zA-Z]+$/.test(name.value) || !/^[a-zA-Z]+$/.test(lastname.value)) {
+                    } else if (!/^[a-zA-ZžŽšŠćĆčČđĐ]+$/.test(name.value) || !/^[a-zA-ZžŽšŠćĆčČđĐ]+$/.test(lastname.value)) {
                         iziToast.error({
                             title: 'Error',
                             message: 'Name and Lastname must contain only letters',
@@ -213,6 +235,11 @@
                         iziToast.error({
                             title: 'Error',
                             message: 'Username must contain only letters, numbers, or underscores',
+                        });
+                    } else if (!/^[a-zA-ZžŽšŠćĆčČđĐ 0-9]+$/.test(address.value)) {
+                        iziToast.error({
+                            title: 'Error',
+                            message: 'Please enter a valid address',
                         });
                     } else if (!/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/.test(email.value)) {
                         iziToast.error({

@@ -9,6 +9,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/iziToast.min.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 <body>
 	<div class="main">
@@ -77,14 +78,34 @@
 		</div>
 		<div class="foot">
 			<div class="copyright">
-                <a href="https://github.com/beersaa" class="copyright-text" target="_blank">©</a> copyright by AB
+                <a class="copyright-text" target="_blank">©</a> copyright by AB
             </div>
 		</div>
 	</div>
 </body>
 <script src="javascript/iziToast.min.js" type="text/javascript"></script>
+<script src="javascript/sweetalert2.min.js" type="text/javascript"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        var copyRight = document.querySelector('.copyright-text');
+
+            if (copyRight) {
+                copyRight.addEventListener('click', function (event) {
+                    Swal.fire({
+                        title: "Made by AB",
+                        text: "https://github.com/beersaa",
+                        icon: "info",
+                        iconColor:"#ff7700",
+                        confirmButtonColor:"#ff7700",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("/slike/secret.gif")
+                        left top
+                        no-repeat
+                        `
+                    });
+                });
+            }
         document.body.style.backgroundColor = 'black';
         document.body.style.transition = 'opacity 1s ease-in-out';
         document.body.style.opacity = 1;
@@ -160,7 +181,7 @@
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
-        var nameRegex = /^[A-Za-z]+$/;
+        var nameRegex = /^[a-zA-ZžŽšŠćĆčČđĐ\s\.]+$/;
         
         if (!name.value.trim() || !nameRegex.test(name.value)) {
             iziToast.error({
@@ -211,7 +232,7 @@
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
-        var nameRegex = /^[A-Za-z]+$/;
+        var nameRegex = /^[a-zA-ZžŽšŠćĆčČđĐ\s\.]+$/;
         
         if (!name.value.trim() || !nameRegex.test(name.value)) {
             iziToast.error({

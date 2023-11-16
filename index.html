@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/iziToast.min.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 <body>
     <div class="main">
@@ -66,6 +67,7 @@
         </div>
     </div>
     <script src="javascript/iziToast.min.js" type="text/javascript"></script>
+    <script src="javascript/sweetalert2.min.js" type="text/javascript"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.body.style.backgroundColor = 'black';
@@ -76,9 +78,18 @@
 
             if (copyRight) {
                 copyRight.addEventListener('click', function (event) {
-                    iziToast.info({
-                        title: 'Credits',
-                        message: 'Made by AB 4.Ra',
+                    Swal.fire({
+                        title: "Made by AB",
+                        text: "https://github.com/beersaa",
+                        icon: "info",
+                        iconColor:"#ff7700",
+                        confirmButtonColor:"#ff7700",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("/slike/secret.gif")
+                        left top
+                        no-repeat
+                        `
                     });
                 });
             }
