@@ -17,7 +17,7 @@
                 <img src="slike/novaKBM.png" height="70">
             </div>
             <div class="card">
-                <form onsubmit="return validateForm()">
+                <form>
                     <div class="first-row">
                         <div class="cardnum">
                             <span class="text">CARD NUMBER</span><br>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="cvc">
                             <span class="text">CVC</span><br>
-                            <input id="cvc" class="inputcvc" placeholder="253" maxlength="3" required>
+                            <input id="cvc" class="inputcvc" placeholder="253"  minlength="3" maxlength="3" required>
                         </div>
                     </div>
                     <div class="second-row">
@@ -79,23 +79,7 @@
         </div>
     </div>
     <script>
-        function validateForm() {
-            const cardNumber = document.getElementById("cardnumber");
-            const cvc = document.getElementById("cvc");
-            const cardHolder = document.getElementById("cardholder");
-            const month = document.getElementById("month");
-            const year = document.getElementById("year");
-            const errorMessage = document.getElementById("error-message");
 
-            if (!cardNumber.checkValidity() || !cvc.checkValidity() || !cardHolder.checkValidity() || !month.checkValidity() || !year.checkValidity()) {
-                errorMessage.textContent = "Please fill in all fields correctly.";
-                return false;
-            } else {
-                errorMessage.textContent = "";
-                closeWindow();
-                return true;
-            }
-        }
 
         const creditCardInput = document.getElementById("cardnumber");
 
@@ -117,6 +101,7 @@
             window.opener = self;
             window.close();
         }
+
     </script>
 </body>
 </html>
