@@ -41,7 +41,7 @@
 					<div class="field-middle">
 						<div class="field-middle-name">
 							<label for="name">Full name:<v>*</v></label><br>
-							<input id=name class="field-middle-name-input" type="text" maxlength="20" required>
+							<input id=name class="field-middle-name-input" type="text" maxlength="20" pattern="[A-Za-z]" required>
 						</div>
 						<div class="field-middle-surname">
 							<label for="surname">Surname:<v>*</v></label><br>
@@ -65,11 +65,11 @@
                 			<span id="radio6"><input id="radio6b" type="radio" value="0" name="amount" onchange="toggleCustomAmount(this)">Custom amount</span>
 						</div>
 						<div class="costum-donation">
-							<input id="amount" type="text" placeholder="100$" maxlength="6" disabled>
+							<input id="amount" onkeypress="return isNumberKey(event)" onfocus="this.value=''" type="text" placeholder="100$" maxlength="6" disabled>
 						</div>
 					</div>
 					<div class="field-middle-bottom">
-						<button id="paypal" class="button-paypal"><img class="img-paypal" src="slike/paypal.svg"> </button>
+						<button id="paypal" class="button-paypal" type="button"><img class="img-paypal" src="slike/paypal-logo.png"> </button>
 						<button  id="creditcard" class="button-creditcard" type="button"> Pay with credit card</button>
 					</div>
 				</form>	
@@ -155,15 +155,22 @@
         var email = document.getElementById("email");
         var selectedAmount = document.querySelector('input[name="amount"]:checked');
 
-        if (!name.value.trim()) {
+        var width = 500;
+        var height = 750; 
+        var left = (window.innerWidth - width) / 2;
+        var top = (window.innerHeight - height) / 2;
+
+        var nameRegex = /^[A-Za-z]+$/;
+        
+        if (!name.value.trim() || !nameRegex.test(name.value)) {
             iziToast.error({
                 title: 'Error',
-                message: 'Please type in your name!',
+                message: 'Please type in a valid name without numbers or special characters!',
             });
-        } else if (!surname.value.trim()) {
+        } else if (!surname.value.trim() || !nameRegex.test(surname.value)) {
             iziToast.error({
                 title: 'Error',
-                message: 'Please type in your surname!',
+                message: 'Please type in a valid surname without numbers or special characters!',
             });
         } else if (!email.value.trim() || !isValidEmail(email.value)) {
             iziToast.error({
@@ -176,10 +183,16 @@
                 message: 'Please select a donation amount!',
             });
         } else {
-            iziToast.info({
-                message: 'Coming soon!',
+            window.open("paypal.html", "CreditCardWindow", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+            iziToast.success({
+                title: 'Thank you for your donation!',
+                color: '#ff7700',
                 titleColor: '#000000',
             });
+            var radioButtons = form.querySelectorAll('input[type="radio"]');
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].checked = false;
+            } 
             name.value = '';
             surname.value = '';
             email.value = '';
@@ -198,15 +211,17 @@
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
-        if (!name.value.trim()) {
+        var nameRegex = /^[A-Za-z]+$/;
+        
+        if (!name.value.trim() || !nameRegex.test(name.value)) {
             iziToast.error({
                 title: 'Error',
-                message: 'Please type in your name!',
+                message: 'Please type in a valid name without numbers or special characters!',
             });
-        } else if (!surname.value.trim()) {
+        } else if (!surname.value.trim() || !nameRegex.test(surname.value)) {
             iziToast.error({
                 title: 'Error',
-                message: 'Please type in your surname!',
+                message: 'Please type in a valid surname without numbers or special characters!',
             });
         } else if (!email.value.trim() || !isValidEmail(email.value)) {
             iziToast.error({
@@ -287,5 +302,11 @@
             }, 500);
         }, 500);
     });
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 </script>
 </html>
