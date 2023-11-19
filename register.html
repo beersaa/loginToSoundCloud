@@ -224,9 +224,9 @@
                     ) {
                         iziToast.error({
                             title: 'Error',
-                            message: 'Please fill all the fields',
+                            message: 'Please fill all the fields',žŽšŠćĆčČđĐ
                         });
-                    } else if (!/^[a-zA-ZžŽšŠćĆčČđĐ]+$/.test(name.value) || !/^[a-zA-ZžŽšŠćĆčČđĐ]+$/.test(lastname.value)) {
+                    } else if (!/^[a-zA-ZžŽšŠćĆčČđĐ]+( [a-zA-ZžŽšŠćĆčČđĐ]+)*$/.test(name.value) || !/^[a-zA-ZžŽšŠćĆčČđĐ]+( [a-zA-ZžŽšŠćĆčČđĐ]+)*$/.test(lastname.value)) {
                         iziToast.error({
                             title: 'Error',
                             message: 'Name and Lastname must contain only letters',

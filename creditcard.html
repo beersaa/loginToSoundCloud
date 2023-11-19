@@ -31,7 +31,7 @@
                     <div class="second-row">
                         <div class="name">
                             <span class="text">CARD HOLDER NAME</span><br>
-                            <input id="cardholder" class="inputname" placeholder="John Davis Amadeus The Third" maxlength="40" pattern="[a-zA-Z]+ [a-zA-Z]+$" required>
+                            <input id="cardholder" class="inputname" placeholder="John Davis Amadeus The Third" maxlength="40" pattern="[a-zA-Z]+( [a-zA-Z]+)*$" required>
                         </div>
                     </div>
                     <div class="third-row">
@@ -79,29 +79,52 @@
         </div>
     </div>
     <script>
-
-
+        function validateCreditCard() {
+            const creditCardNumber = document.getElementById("cardnumber").value.replace(/\s/g, '');
+    
+            if (!luhn_algorithm(creditCardNumber)) {
+                document.getElementById("error-message").textContent = "Invalid credit card number!";
+                return false;
+            }
+    
+            document.getElementById("error-message").textContent = "";
+            return true;
+        }
+    
+        function luhn_algorithm(card_number) {
+            let digits = card_number.split('').map(Number);
+    
+            for (let i = digits.length - 2; i >= 0; i -= 2) {
+                digits[i] *= 2;
+                if (digits[i] > 9) {
+                    digits[i] -= 9;
+                }
+            }
+    
+            let total = digits.reduce((acc, val) => acc + val, 0);
+            return total % 10 === 0;
+        }
+    
         const creditCardInput = document.getElementById("cardnumber");
-
+    
         creditCardInput.addEventListener("input", function () {
             let value = this.value.replace(/\D/g, '');
             let formattedValue = '';
-
+    
             for (let i = 0; i < value.length; i++) {
                 formattedValue += value[i];
                 if ((i + 1) % 4 === 0 && i < value.length - 1) {
                     formattedValue += ' ';
                 }
             }
-
+    
             this.value = formattedValue;
         });
-
+    
         function closeWindow() {
             window.opener = self;
             window.close();
         }
-
-    </script>
+    </script>    
 </body>
 </html>
